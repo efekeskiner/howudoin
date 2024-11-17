@@ -3,10 +3,11 @@ package com.example.howudoin.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "users")
+@Document(collection = "users") // Map to "users" collection in MongoDB
 public class User {
+
     @Id
-    private String id;
+    private String id; // MongoDB auto-generated ID
     private String firstName;
     private String lastName;
     private String email;
