@@ -1,8 +1,10 @@
 package com.example.howudoin.controllers;
 
 import com.example.howudoin.models.User;
+import com.example.howudoin.repositories.UserRepository;
 import com.example.howudoin.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,4 +34,5 @@ public class UserController {
         return userService.getUserByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Kullanıcı bulunamadı!"));
     }
+
 }

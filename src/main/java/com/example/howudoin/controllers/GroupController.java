@@ -17,10 +17,12 @@ public class GroupController {
     private GroupService groupService;
 
     // Create a new group
+    // Create a new group
     @PostMapping("/create")
-    public ResponseEntity<Group> createGroup(@RequestParam String name, @RequestBody List<String> members) {
-        return ResponseEntity.ok(groupService.createGroup(name, members));
+    public ResponseEntity<Group> createGroup(@RequestParam String name, @RequestParam String creatorId, @RequestBody List<String> members) {
+        return ResponseEntity.ok(groupService.createGroup(name, members, creatorId));
     }
+
 
     // Add a new member to an existing group
     @PostMapping("/{groupId}/add-member")
@@ -45,4 +47,13 @@ public class GroupController {
     public ResponseEntity<List<String>> getMembers(@PathVariable String groupId) {
         return ResponseEntity.ok(groupService.getMembers(groupId));
     }
+
+
+    // Get all groups
+    @GetMapping("/")
+    public ResponseEntity<List<Group>> getAllGroups() {
+        return ResponseEntity.ok(groupService.getAllGroups());
+    }
+
+
 }

@@ -1,4 +1,6 @@
+
 package com.example.howudoin.services;
+
 
 import com.example.howudoin.models.Message;
 import com.example.howudoin.repositories.MessageRepository;
@@ -25,3 +27,5 @@ public class MessageService {
         return messageRepository.findBySenderIdAndRecipientId(senderId, recipientId);
     }
 }
+
+

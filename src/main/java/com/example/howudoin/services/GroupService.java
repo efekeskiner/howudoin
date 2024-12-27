@@ -12,6 +12,8 @@ import java.util.List;
 @Service
 public class GroupService {
 
+
+
     @Autowired
     private GroupRepository groupRepository;
 
@@ -19,10 +21,16 @@ public class GroupService {
     private GroupMessageRepository groupMessageRepository;
 
     // Create a new group
-    public Group createGroup(String name, List<String> members) {
+    // Create a new group
+    public Group createGroup(String name, List<String> members, String creatorId) {
+        // Oluşturucu ID'sini member listesine ekle
+        if (!members.contains(creatorId)) {
+            members.add(creatorId);
+        }
         Group group = new Group(name, members);
         return groupRepository.save(group);
     }
+
 
     // Add a member to a group
     public Group addMember(String groupId, String memberId) {
@@ -52,4 +60,10 @@ public class GroupService {
                 .orElseThrow(() -> new RuntimeException("Group not found"));
         return group.getMembers();
     }
+
+    // Get all groups
+    public List<Group> getAllGroups() {
+        return groupRepository.findAll(); // MongoDB'den tüm grupları getir
+    }
+
 }

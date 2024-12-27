@@ -8,3 +8,5 @@ import java.util.List;
 public interface MessageRepository extends MongoRepository<Message, String> {
     List<Message> findBySenderIdAndRecipientId(String senderId, String recipientId);
 }
+
+
